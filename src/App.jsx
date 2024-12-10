@@ -1,19 +1,31 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-/* import HeaderView from "./components/HeaderView";
-import HeroView from "./components/HeroView"; */
 import HomeView from "./views/HomeView";
-
+import LoginView from "./views/LoginView";
+import RegisterView from "./views/RegisterView";
+import MovieView from "./views/MovieView";
+import GenreView from "./views/GenreView";
+import DetailView from "./views/DetailView";
+import CartView from "../src/views/CartView";
+import { StoreProvider } from "./context";
 import './App.css'
 
 function App() {
 
   return (
-    <>
-      <HomeView />
-    {/*   <HeroView />
-      <FeatureView />
- */}
-    </>
+    <StoreProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="" element={<HomeView />} />
+          <Route path="/register" element={<RegisterView />} />
+          <Route path="/login" element={<LoginView />} />
+          <Route path="/movie" element={<MovieView />}>
+            <Route path="genre/:id" element={<GenreView />} />
+            <Route path="details/:id" element={<DetailView />} />
+            <Route path="cart" element={<CartView />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </StoreProvider>
 
   )
 }
