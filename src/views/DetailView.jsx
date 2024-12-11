@@ -9,6 +9,7 @@ function DetailView() {
     const [details, setDetails] = useState([]);
     const { cart, setCart } = useStoreContext();
     const navigate = useNavigate();
+    const [buttonText, setButtonText] = useState('Buy');
 
     useEffect(() => {
         if (id === null) return;
@@ -21,12 +22,25 @@ function DetailView() {
         }
         getDetails();
     }, [id]);
+
     useEffect(() => {
-        console.log('Current context values:', { cart });
-    }, [cart]);
+        if (cart.has(id)) {
+            setButtonText("Added");
+        } else {
+            setButtonText("Buy");
+        }
+    }, [cart, id]);
 
     function cartPage() {
         navigate(`/movie/cart`);
+    }
+
+    function addToCart() {
+        const movieDetails = {
+            title: details.original_title,
+            url: details.poster_path,
+        };
+        setCart((prevCart) => prevCart.set(id, movieDetails));
     }
 
     return (
@@ -43,7 +57,7 @@ function DetailView() {
                 )}
             </div>
             <div className="detail-buttons">
-                <button onClick={() => setCart((prevCart) => prevCart.set(id.id, { title: details.original_title, url: details.poster_path }))} className="buy-button">Buy</button>
+                <button onClick={addToCart} className="buy-button">{buttonText}</button>
                 <button className="cart-button" onClick={cartPage}>Cart</button>
             </div>
             {details.poster_path && (

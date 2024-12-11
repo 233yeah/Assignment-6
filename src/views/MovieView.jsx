@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import Genre from "../components/Genre";
 import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
-import { useStoreContext } from "../context";
 
 function MovieView() {
     const genres = [
@@ -18,12 +17,7 @@ function MovieView() {
         { id: 53, genre: 'Thriller' },
         { id: 37, genre: 'Western' }
       ];
-      const { password } = useStoreContext();
-      const { email } = useStoreContext();
-      const { firstName } = useStoreContext();
-      const { lastName } = useStoreContext();
 
-      console.log(email,password,firstName,lastName);
     return (
         <div>
             <Header />

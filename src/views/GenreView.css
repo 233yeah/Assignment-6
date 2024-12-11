@@ -93,6 +93,8 @@ h2 {
 }
 
 .page-title{
+    margin-top: 10px;
+    position: relative;
     font-size: 1.5rem;
     font-family: 'Roboto', sans-serif;
     background-color: #000000;
@@ -113,4 +115,15 @@ h2 {
     display: block;
     transition: background-color 0.3s ease;
     margin-bottom: 25px;
+}
+
+.name-title{
+    position: relative;
+    text-align: center;
+    font-size: 2rem;
+    color: #ff0000;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 10px;
+    background-color: #000000;
+    padding: 5px;
 }

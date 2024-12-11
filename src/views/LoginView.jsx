@@ -3,17 +3,19 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useStoreContext } from "../context";
 
 function LoginView() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const { login,setLogin } = useStoreContext();
 
     function genrePage(event) {
         event.preventDefault();
-        console.log(password);
         if (password === "keshi") {
             navigate(`/movie/genre/28`);
+            setLogin(true);
         } else {
             alert("Wrong password!");
         }

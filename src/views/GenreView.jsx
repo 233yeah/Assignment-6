@@ -23,7 +23,9 @@ function GenreView() {
         37: "Western",
     };
     const genreName = genreNames[id];
-    
+    const { firstName } = useStoreContext();
+
+
     useEffect(() => {
         if (id === null) return;
         async function getMovies() {
@@ -36,6 +38,7 @@ function GenreView() {
 
         getMovies();
     }, [id][page]);
+
     useEffect(() => {
         setPage(1);
     }, [id]);
@@ -57,11 +60,12 @@ function GenreView() {
     }
 
     function cartPage() {
-            navigate(`/movie/cart`);
+        navigate(`/movie/cart`);
     }
 
     return (
         <div className="genre-list-container">
+            <h className="name-title">Hello {firstName}</h>
             <p className="page-title">Page: {page}/{totalPages} Current Genre:{genreName}</p>
             <button className="cart-button" onClick={cartPage}>Cart</button>
             <div className="movie-list">

@@ -7,27 +7,25 @@ import { useStoreContext } from '../context';
 
 function RegisterView() {
     const firstName = useRef('');
-    const { setFirstName } = useStoreContext();
+    const { setFirstName, setLastName, setEmail, setPassword, setLogin, checked, toggleGenre } = useStoreContext();
     const lastName = useRef('');
-    const { setLastName } = useStoreContext();
     const email = useRef('');
-    const { setEmail } = useStoreContext();
     const password = useRef('');
-    const { setPassword } = useStoreContext();
     const [rePassword, setRePassword] = useState("");
     const genres = [
-        { checked: false, genre: 'Action' },
-        { checked: false, genre: 'Adventure' },
-        { checked: false, genre: 'Animation' },
-        { checked: false, genre: 'Comedy' },
-        { checked: false, genre: 'Music' },
-        { checked: false, genre: 'Horror' },
-        { checked: false, genre: 'Mystery' },
-        { checked: false, genre: 'Fantasy' },
-        { checked: false, genre: 'Thriller' },
-        { checked: false, genre: 'Western' }
+        'Action',
+        'Adventure',
+        'Animation',
+        'Comedy',
+        'Music',
+        'Horror',
+        'Mystery',
+        'Fantasy',
+        'Thriller',
+        'Western'
     ];
     const navigate = useNavigate();
+
 
     function register(event) {
         event.preventDefault();
@@ -36,11 +34,13 @@ function RegisterView() {
             setLastName(lastName.current.value);
             setEmail(email.current.value);
             setPassword(password.current.value);
+            setLogin(true);
             navigate(`/movie/genre/28`);
         } else {
             alert("passwords don't match");
         }
     }
+
     useEffect(() => {
         console.log('Current context values:', { firstName, lastName, email, password });
     }, [firstName, lastName, email, password]);
@@ -56,11 +56,11 @@ function RegisterView() {
                         <div key={i}>
                             <input
                                 type="checkbox"
-                                checked={item.checked}
-                                onChange={(e) => handleCheckBox(e, i)}
+                                checked={checked[item]}
+                                onChange={() => toggleGenre(item)} // Toggle the checked state of the genre
                                 id={`checkbox-${i}`}
                             />
-                            <label className="genre-name">{item.genre}</label>
+                            <label className="genre-name">{item}</label>
                         </div>
                     ))}
                 </div>
