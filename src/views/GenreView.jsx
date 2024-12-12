@@ -23,8 +23,8 @@ function GenreView() {
         37: "Western",
     };
     const genreName = genreNames[id];
-    const { firstName } = useStoreContext();
-
+    const { firstName, cart, setCart } = useStoreContext();
+    const [buttonText, setButtonText] = useState('Buy');
 
     useEffect(() => {
         if (id === null) return;
@@ -43,6 +43,14 @@ function GenreView() {
         setPage(1);
     }, [id]);
 
+    useEffect(() => {
+        if (cart.has(id)) {
+            setButtonText("Added");
+        } else {
+            setButtonText("Buy");
+        }
+    }, [cart, id]);
+
     function nextPage() {
         if (page < totalPages) {
             setPage(page + 1);
@@ -60,7 +68,11 @@ function GenreView() {
     }
 
     function cartPage() {
-        navigate(`/movie/cart`);
+        navigate(`/cart`);
+    }
+
+    function addToCart(title) {
+        setCart((prevCart) => prevCart.set(title));
     }
 
     return (
@@ -70,13 +82,16 @@ function GenreView() {
             <button className="cart-button" onClick={cartPage}>Cart</button>
             <div className="movie-list">
                 {movies.map((movie) => (
-                    <div key={movie.id} className="movie-item" onClick={() => { loadMovie(movie.id) }}>
-                        <img
-                            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                            alt={movie.title}
-                            className="movie-poster"
-                        />
-                        <h className="movie-title">{movie.title}</h>
+                    <div>
+                        <div key={movie.id} className="movie-item" onClick={() => { loadMovie(movie.id) }}>
+                            <img
+                                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                alt={movie.title}
+                                className="movie-poster"
+                            />
+                            <h className="movie-title">{movie.title}</h>
+                        </div>
+                        <button className="buy-button" onClick={() => addToCart(movie.title)}>{buttonText}</button>
                     </div>
                 ))}
             </div>

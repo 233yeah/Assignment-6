@@ -17,7 +17,7 @@ h1 {
 
 /* Register Form */
 .settings-form {
-    margin-bottom: 60px;
+    margin-bottom: 20px;
 }
 
 .settings-text {
@@ -28,7 +28,7 @@ h1 {
 }
 
 .settings-inputs {
-    width: 50%;
+    width: 90%;
     padding: 12px;
     margin-bottom: 16px;
     background-color: #333;
@@ -44,7 +44,7 @@ h1 {
     /* Red border on focus */
 }
 
-.settings-button {
+.settings-button,.back-button {
     position: relative;
     padding: 12px;
     background-color: #e50914;
@@ -54,8 +54,6 @@ h1 {
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    top: 60px;
-    right: 770px
 }
 
 .register-button:hover {
@@ -69,7 +67,6 @@ h1 {
     padding-top: 20px;
     padding-left: 20px;
     color: white;
-    border-radius: 6px;
     padding-bottom: 20px;
 }
 

@@ -25,7 +25,7 @@ function Header() {
     }
 
     function settingsPage() {
-        navigate(`settings`);
+        navigate(`/settings`);
     }
 
 

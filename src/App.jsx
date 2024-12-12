@@ -19,11 +19,11 @@ function App() {
           <Route path="" element={<HomeView />} />
           <Route path="/register" element={<RegisterView />} />
           <Route path="/login" element={<LoginView />} />
+          <Route path="/cart" element={<CartView />} />
+          <Route path="/settings" element={<SettingsView />} />
           <Route path="/movie" element={<MovieView />}>
             <Route path="genre/:id" element={<GenreView />} />
             <Route path="details/:id" element={<DetailView />} />
-            <Route path="cart" element={<CartView />} />
-            <Route path="settings" element={<SettingsView />} />
           </Route>
         </Routes>
       </BrowserRouter>

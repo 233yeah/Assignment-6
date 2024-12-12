@@ -32,7 +32,7 @@ function DetailView() {
     }, [cart, id]);
 
     function cartPage() {
-        navigate(`/movie/cart`);
+        navigate(`/cart`);
     }
 
     function addToCart() {

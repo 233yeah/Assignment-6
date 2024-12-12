@@ -82,7 +82,6 @@ function RegisterView() {
                     </form>
                 </div>
             </div>
-
             <Footer />
         </div>
 
