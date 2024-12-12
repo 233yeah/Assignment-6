@@ -6,3 +6,78 @@
     min-height: 100vh;
     width: 100%;
 }
+
+h1 {
+    text-align: center;
+    color: #e50914;
+    /* Netflix Red */
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Register Form */
+.settings-form {
+    margin-bottom: 60px;
+}
+
+.settings-text {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #b3b3b3;
+}
+
+.settings-inputs {
+    width: 50%;
+    padding: 12px;
+    margin-bottom: 16px;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #e5e5e5;
+    font-size: 16px;
+}
+
+.settings-inputs:focus {
+    outline: none;
+    border-color: #e50914;
+    /* Red border on focus */
+}
+
+.settings-button {
+    position: relative;
+    padding: 12px;
+    background-color: #e50914;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    top: 60px;
+    right: 770px
+}
+
+.register-button:hover {
+    background-color: #f40612;
+}
+
+.settings-checklist {
+    background-color: rgb(12, 12, 12);
+    height: auto;
+    width: 25%;
+    padding-top: 20px;
+    padding-left: 20px;
+    color: white;
+    border-radius: 6px;
+    padding-bottom: 20px;
+}
+
+.settings-paragraph {
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.settings-name {
+    font-family: 'Roboto', sans-serif;
+}

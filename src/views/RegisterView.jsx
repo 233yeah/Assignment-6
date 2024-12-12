@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useStoreContext } from '../context';
 
 function RegisterView() {
-    const firstName = useRef('');
     const { setFirstName, setLastName, setEmail, setPassword, setLogin, checked, toggleGenre } = useStoreContext();
+    const firstName = useRef('');
     const lastName = useRef('');
     const email = useRef('');
     const password = useRef('');
@@ -57,7 +57,7 @@ function RegisterView() {
                             <input
                                 type="checkbox"
                                 checked={checked[item]}
-                                onChange={() => toggleGenre(item)} // Toggle the checked state of the genre
+                                onChange={() => toggleGenre(item)}
                                 id={`checkbox-${i}`}
                             />
                             <label className="genre-name">{item}</label>
