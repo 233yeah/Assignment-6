@@ -9,7 +9,7 @@ function CartView() {
   const navigate = useNavigate();
 
   function backPage() {
-    navigate(`/movie/genre/28`);
+    navigate(`/movie/genre/0`);
   }
 
   return (

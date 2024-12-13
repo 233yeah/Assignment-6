@@ -71,8 +71,12 @@ function GenreView() {
         navigate(`/cart`);
     }
 
-    function addToCart(title) {
-        setCart((prevCart) => prevCart.set(title));
+    function addToCart(movie) {
+        const movieDetails = {
+            title: movie.original_title,
+            url: movie.poster_path,
+        };
+        setCart((prevCart) => prevCart.set(movie.id, movieDetails));
     }
 
     return (
@@ -91,8 +95,8 @@ function GenreView() {
                             />
                             <h className="movie-title">{movie.title}</h>
                         </div>
-{/*                         <button className="buy-button" onClick={() => addToCart(movie.title)}>{buttonText}</button>
- */}                    </div>
+                        <button className="buy-button" onClick={() => addToCart(movie)}> {cart.has(movie.id) ? "Added" : "Buy"} </button>
+                    </div>
                 ))}
             </div>
             {page < totalPages && (

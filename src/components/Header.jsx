@@ -6,10 +6,6 @@ function Header() {
     const navigate = useNavigate();
     const { login, setLogin, resetState } = useStoreContext();
 
-    function homePage() {
-        navigate(`/`);
-    }
-
     function loginPage() {
         navigate(`/login`);
     }
@@ -31,7 +27,7 @@ function Header() {
 
     return (
         <div className="tb-item top-bar">
-            <h className="logo " onClick={homePage}>WacFlix</h>
+            <h className="logo "> WacFlix </h>
             <div className="buttons">
                 {!login ? (
                     <>

@@ -35,12 +35,12 @@ function DetailView() {
         navigate(`/cart`);
     }
 
-    function addToCart() {
+    function addToCart(movie) {
         const movieDetails = {
-            title: details.original_title,
-            url: details.poster_path,
+            title: movie.original_title,
+            url: movie.poster_path,
         };
-        setCart((prevCart) => prevCart.set(id, movieDetails));
+        setCart((prevCart) => prevCart.set(movie.id, movieDetails));
     }
 
     return (
@@ -57,8 +57,8 @@ function DetailView() {
                 )}
             </div>
             <div className="detail-buttons">
-                <button onClick={addToCart} className="buy-button">{buttonText}</button>
-                <button className="cart-button" onClick={cartPage}>Cart</button>
+            <button className="buy-button" onClick={() => addToCart(details)}> {cart.has(details.id) ? "Added" : "Buy"} </button>
+            <button className="cart-button" onClick={cartPage}>Cart</button>
             </div>
             {details.poster_path && (
                 <img

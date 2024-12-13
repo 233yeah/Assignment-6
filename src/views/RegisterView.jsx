@@ -17,6 +17,8 @@ function RegisterView() {
         'Adventure',
         'Animation',
         'Comedy',
+        "Crime",
+        "Family",
         'Music',
         'Horror',
         'Mystery',
