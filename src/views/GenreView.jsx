@@ -91,8 +91,8 @@ function GenreView() {
                             />
                             <h className="movie-title">{movie.title}</h>
                         </div>
-                        <button className="buy-button" onClick={() => addToCart(movie.title)}>{buttonText}</button>
-                    </div>
+{/*                         <button className="buy-button" onClick={() => addToCart(movie.title)}>{buttonText}</button>
+ */}                    </div>
                 ))}
             </div>
             {page < totalPages && (
