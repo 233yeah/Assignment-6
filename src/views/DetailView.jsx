@@ -57,8 +57,8 @@ function DetailView() {
                 )}
             </div>
             <div className="detail-buttons">
-            <button className="buy-button" onClick={() => addToCart(details)}> {cart.has(details.id) ? "Added" : "Buy"} </button>
-            <button className="cart-button" onClick={cartPage}>Cart</button>
+                <button className="buy-button" onClick={() => addToCart(details)}> {cart.has(details.id) ? "Added" : "Buy"} </button>
+                <button className="cart-button" onClick={cartPage}>Cart</button>
             </div>
             {details.poster_path && (
                 <img
