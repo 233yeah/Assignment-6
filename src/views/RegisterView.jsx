@@ -6,46 +6,47 @@ import { useNavigate } from "react-router-dom";
 import { useStoreContext } from '../context';
 
 function RegisterView() {
-    const { setFirstName, setLastName, setEmail, setPassword, setLogin, checked, toggleGenre } = useStoreContext();
+    const { setFirstName, setLastName, setEmail, setPassword, setLogin, checked, prefGenre, toggleGenre } = useStoreContext();
     const firstName = useRef('');
     const lastName = useRef('');
     const email = useRef('');
     const password = useRef('');
     const [rePassword, setRePassword] = useState("");
     const genres = [
-        'Action',
-        'Adventure',
-        'Animation',
-        'Comedy',
-        "Crime",
-        "Family",
-        'Music',
-        'Horror',
-        'Mystery',
-        'Fantasy',
-        'Thriller',
-        'Western'
+        { id: 28, genre: 'Action' },
+        { id: 12, genre: 'Adventure' },
+        { id: 16, genre: 'Animation' },
+        { id: 80, genre: 'Crime' },
+        { id: 35, genre: 'Comedy' },
+        { id: 10751, genre: 'Family' },
+        { id: 10402, genre: 'Music' },
+        { id: 36, genre: 'History' },
+        { id: 27, genre: 'Horror' },
+        { id: 9648, genre: 'Mystery' },
+        { id: 878, genre: 'Sci-Fi' },
+        { id: 10752, genre: 'War' },
+        { id: 53, genre: 'Thriller' },
+        { id: 37, genre: 'Western' }
     ];
     const navigate = useNavigate();
 
-
     function register(event) {
         event.preventDefault();
-        if (password.current.value === rePassword) {
+        if (password.current.value === rePassword && prefGenre.length >= 10) {
             setFirstName(firstName.current.value);
             setLastName(lastName.current.value);
             setEmail(email.current.value);
             setPassword(password.current.value);
             setLogin(true);
-            navigate(`/movie/genre/28`);
+            navigate(`/movie/genre/0`);
         } else {
-            alert("passwords don't match");
+            alert("make sure the passwords match and you selected at least 10 genres");
         }
     }
 
     useEffect(() => {
-        console.log('Current context values:', { firstName, lastName, email, password });
-    }, [firstName, lastName, email, password]);
+        console.log(prefGenre);
+    }, [prefGenre]);
 
     return (
         <div>
@@ -53,18 +54,19 @@ function RegisterView() {
             <div className="register-flex">
                 <div className="genre-checklist">
                     <h className="genre-title">Genres</h>
-                    <p className="genre-paragraph">Please choose up to 10 genres so we can personalize your account</p>
+                    <p className="genre-paragraph">Please choose at least 10 genres so we can personalize your account</p>
                     {genres.map((item, i) => (
                         <div key={i}>
                             <input
                                 type="checkbox"
-                                checked={checked[item]}
+                                checked={checked[item.genre]}
                                 onChange={() => toggleGenre(item)}
                                 id={`checkbox-${i}`}
                             />
-                            <label className="genre-name">{item}</label>
+                            <label className="genre-name">{item.genre}</label>
                         </div>
                     ))}
+                    <p className="genre-count"># of genres selected {prefGenre.length}</p>
                 </div>
 
                 <div className="register-container">

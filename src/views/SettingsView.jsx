@@ -5,18 +5,22 @@ import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 
 function SettingsView() {
-    const { password, email, firstName, lastName, checked, toggleGenre, setFirstName, setLastName } = useStoreContext();
+    const { password, email, firstName, lastName, checked, toggleGenre, setFirstName, setLastName, prefGenre } = useStoreContext();
     const genres = [
-        'Action',
-        'Adventure',
-        'Animation',
-        'Comedy',
-        'Music',
-        'Horror',
-        'Mystery',
-        'Fantasy',
-        'Thriller',
-        'Western'
+        { id: 28, genre: 'Action' },
+        { id: 12, genre: 'Adventure' },
+        { id: 16, genre: 'Animation' },
+        { id: 80, genre: 'Crime' },
+        { id: 35, genre: 'Comedy' },
+        { id: 10751, genre: 'Family' },
+        { id: 10402, genre: 'Music' },
+        { id: 36, genre: 'History' },
+        { id: 27, genre: 'Horror' },
+        { id: 9648, genre: 'Mystery' },
+        { id: 878, genre: 'Sci-Fi' },
+        { id: 10752, genre: 'War' },
+        { id: 53, genre: 'Thriller' },
+        { id: 37, genre: 'Western' }
     ];
     const navigate = useNavigate();
 
@@ -26,7 +30,11 @@ function SettingsView() {
     }
 
     function backPage() {
-        navigate(`/movie/genre/28`);
+        if (prefGenre.length >= 10) {
+            navigate(`/movie/genre/0`);
+        } else {
+            alert("make sure you selected at least 10 genres");
+        }
     }
 
     return (
@@ -40,13 +48,14 @@ function SettingsView() {
                         <div key={i}>
                             <input
                                 type="checkbox"
-                                checked={checked[item]}
-                                onChange={() => toggleGenre(item)} // Toggle the checked state of the genre
+                                checked={checked[item.genre]}
+                                onChange={() => toggleGenre(item)}
                                 id={`checkbox-${i}`}
                             />
-                            <label className="settings-name">{item}</label>
+                            <label className="genre-name">{item.genre}</label>
                         </div>
                     ))}
+                    <p className="genre-count"># of genres selected {prefGenre.length}</p>
                 </div>
                 <div className="settings-view">
                     <button onClick={() => backPage()} className="back-button">Back</button>

@@ -11,17 +11,24 @@ function GenreView() {
     const [totalPages, setTotalPages] = useState();
     const navigate = useNavigate();
     const genreNames = {
+        0: "None",
         28: "Action",
         12: "Adventure",
         16: "Animation",
-        80: "Comedy",
+        80: 'Crime',
+        35: "Comedy",
+        10751: "Family",
         10402: "Music",
+        36: "History",
         27: "Horror",
         9648: "Mystery",
+        878: "Sci-Fi",
         14: "Fantasy",
+        10752: "War",
         53: "Thriller",
         37: "Western",
     };
+
     const genreName = genreNames[id];
     const { firstName, cart, setCart } = useStoreContext();
     const [buttonText, setButtonText] = useState('Buy');

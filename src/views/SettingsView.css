@@ -44,7 +44,8 @@ h1 {
     /* Red border on focus */
 }
 
-.settings-button,.back-button {
+.settings-button,
+.back-button {
     position: relative;
     padding: 12px;
     background-color: #e50914;
@@ -76,5 +77,36 @@ h1 {
 }
 
 .settings-name {
+    font-family: 'Roboto', sans-serif;
+}
+
+.genre-checkbox {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.genre-checkmark {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.genre-checkmark.checked {
+    background-color: #e50914;
+    border-color: #e50914;
+}
+
+.genre-count {
+    font-size: 1.2rem;
+    margin-top: 15px;
     font-family: 'Roboto', sans-serif;
 }

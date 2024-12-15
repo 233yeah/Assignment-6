@@ -14,7 +14,7 @@ function LoginView() {
     function genrePage(event) {
         event.preventDefault();
         if (password === "keshi") {
-            navigate(`/movie/genre/28`);
+            navigate(`/movie/genre/0`);
             setLogin(true);
         } else {
             alert("Wrong password!");
