@@ -1,7 +1,7 @@
 import "./RegisterView.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStoreContext } from '../context';
 
@@ -43,10 +43,6 @@ function RegisterView() {
             alert("make sure the passwords match and you selected at least 10 genres");
         }
     }
-
-    useEffect(() => {
-        console.log(prefGenre);
-    }, [prefGenre]);
 
     return (
         <div>

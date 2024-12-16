@@ -30,13 +30,11 @@ export const StoreProvider = ({ children }) => {
     const toggleGenre = (genre) => {
         setChecked((prev) => {
             const updatedChecked = { ...prev, [genre.genre]: !prev[genre.genre] };
-
-            // Update prefGenre based on checked state
             const updatedPrefGenre = Object.keys(updatedChecked)
                 .filter((genreKey) => updatedChecked[genreKey])
-                .map((genreKey) => genres.find((g) => g.genre === genreKey)); // Find matching genre object
+                .map((genreKey) => genres.find((g) => g.genre === genreKey));
 
-            setPrefGenre(updatedPrefGenre); // Set prefGenre with objects containing both id and genre
+            setPrefGenre(updatedPrefGenre);
 
             return updatedChecked;
         });
